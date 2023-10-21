@@ -1,0 +1,42 @@
+{
+  "name": "material-ui-nextjs-ts",
+  "version": "5.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^4.25.6",
+    "@emotion/cache": "latest",
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@hookform/resolvers": "^3.3.2",
+    "@mui/icons-material": "latest",
+    "@mui/material": "latest",
+    "@prisma/client": "^5.4.2",
+    "add": "^2.0.6",
+    "bcrypt": "^5.1.1",
+    "next": "latest",
+    "next-superjson-plugin": "^0.5.9",
+    "prettier": "^3.0.3",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-hook-form": "^7.47.0",
+    "zod": "^3.22.4",
+    "zustand": "^4.4.4"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.1",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "^8.52.0",
+    "eslint-config-next": "^13.5.6",
+    "prisma": "^5.4.2",
+    "typescript": "latest"
+  }
+}
