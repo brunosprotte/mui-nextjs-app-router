@@ -1,6 +1,7 @@
+
+
 import { useMemo } from "react";
 import { usePathname } from "next/navigation";
-import { signOut } from "next-auth/react";
 
 import Person2Icon from '@mui/icons-material/Person2';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
@@ -57,12 +58,6 @@ const useRoutes = () => {
                 icon: Settings,
                 active: pathname === "/dashboard/settings"
             },
-            {
-                label: 'Sign Out',
-                href: '',
-                icon: ExitToAppIcon,
-                onClick: () => signOut(),
-            }
         ],
         [pathname]
     );

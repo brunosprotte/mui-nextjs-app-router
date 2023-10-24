@@ -5,7 +5,14 @@
         "node": true,
         "jest": true
     },
-    "extends": ["airbnb", "prettier", "plugin:cypress/recommended", "eslint:recommended", "plugin:react/recommended"],
+    "extends": [
+        "prettier", 
+        "plugin:cypress/recommended", 
+        "plugin:react/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript"
+    ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
@@ -14,14 +21,10 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "plugins": ["react", "@typescript-eslint", "cypress", "react-hooks"],
-    "overrides": [
-        {
-            "files": ["src/**/?(*.)+(spec|test).[jt]s?(x)"],
-            "extends": ["plugin:testing-library/react"]
-        }
-    ],
+    "plugins": ["@typescript-eslint", "react", "cypress", "react-hooks"],
     "rules": {
+        "react/function-component-definition": "off",
+        "react/react-in-jsx-scope": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "react/jsx-indent": ["error", 4],
@@ -92,7 +95,8 @@
             "node": {
                 "extensions": [".js", ".jsx", ".ts", ".tsx"],
                 "moduleDirectory": ["node_modules", "src/"]
-            }
+            },
+            "typescript":{}
         }
     }
 }

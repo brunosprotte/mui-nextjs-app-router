@@ -2,7 +2,7 @@
 
 import { useEffect, useState} from 'react'
 
-import  FormDialog  from '@/components/modals/application-modal';
+import  FormDialog  from '@/components/modals/ApplicationModal';
 
 
 export const ModalProvider = ()=> {
