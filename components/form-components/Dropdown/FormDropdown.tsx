@@ -9,12 +9,12 @@ import {
 import { Controller } from "react-hook-form";
 import { FormInputProps } from "../FormInputProps";
 
-interface DropdownOptions {
+export interface DropdownOptions {
     value: string
     label: string
 }
 
-export interface DropdownProps {
+interface DropdownProps {
     options: DropdownOptions[]
 }
 
