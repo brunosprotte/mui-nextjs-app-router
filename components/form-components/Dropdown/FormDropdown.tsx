@@ -1,6 +1,7 @@
 
 import {
     FormControl, 
+    FormHelperText, 
     InputLabel,
     MenuItem, 
     Select 
@@ -8,31 +9,52 @@ import {
 import { Controller } from "react-hook-form";
 import { FormInputProps } from "../FormInputProps";
 
-const options = [
-    { label: "Dropdown Option 1", value: "1", },
-    { label: "Dropdown Option 2", value: "2", },
-];
+interface DropdownOptions {
+    value: string
+    label: string
+}
 
-const FormDropdown: React.FC<FormInputProps> = ({ name,
+export interface DropdownProps {
+    options: DropdownOptions[]
+}
+
+const FormDropdown: React.FC<FormInputProps & DropdownProps> = ({ name,
     control,
-    label, }) => {
+    label,
+    options
+}) => {
         
-    const generateSingleOptions = () => options.map((option: any) => (
+    const generateSingleOptions = () => options.map((option: DropdownOptions) => (
         <MenuItem key={option.value} value={option.value}>
             {option.label}
         </MenuItem>
     ));
     return (
-        <FormControl size={"small"}>
+        <FormControl size={"small"} fullWidth>
             <InputLabel>{label}</InputLabel>
             <Controller
-                render={({ field: { onChange, value } }) => (
-                    <Select onChange={onChange} value={value}>
-                        {generateSingleOptions()}
-                    </Select>
-                )}
                 control={control}
                 name={name}
+                render={({ 
+                    field: { onChange, value },
+                    fieldState: { error }, 
+                }) => (
+                    <>
+                        <Select 
+                            onChange={onChange} 
+                            value={value} 
+                            size="small" 
+                            error={!!error}
+                            label={label}
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            {generateSingleOptions()}
+                        </Select>
+                        <FormHelperText error={!!error}> {error ? error.message : null}</FormHelperText>
+                    </>
+                )}
             />
         </FormControl>
     );

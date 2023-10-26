@@ -15,7 +15,7 @@ model Application {
   id   String @id @default(uuid())
   name String
 
-  // billboards Billboard[] @relation("StoreToBillboard")
+  service Service[] @relation("ServiceToApplication")
   // categories Category[] @relation("StoreToCategory")
   // sizes Size[] @relation("StoreToSize")
   // colors Color[] @relation("StoreToColor")
@@ -24,4 +24,35 @@ model Application {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Service {
+  id                  String @id @default(uuid())
+  name                String
+  healthCheckEndpoint String
+  path                String
+
+  versions Version[] @relation("VersionToService")
+
+  applicationId String
+  application   Application @relation("ServiceToApplication", fields: [applicationId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([applicationId])
+}
+
+model Version {
+  id         String  @id @default(uuid())
+  version    String
+  isReleased Boolean
+
+  serviceId String
+  service   Service @relation("VersionToService", fields: [serviceId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([serviceId])
 }

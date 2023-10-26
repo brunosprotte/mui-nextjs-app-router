@@ -32,7 +32,7 @@ export default async function DashboardLayout({
     }
 
     return (
-        <Box  display={'flex'}>
+        <Box display={'flex'}>
             <Navbar />
             <SideMenu />
             <Box margin={4} marginTop={10} height={'100%'} width={'100%'}>
